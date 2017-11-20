@@ -24,6 +24,9 @@ class SCLang_Execute(SCLang_AbstractBase):
 	@controller.expose(help="Execute some code in sclang.", hide=True)
 	def default(self):
 		sclang = process.find_sclang_executable(self.app.pargs.path)
+		if not sclang:
+			raise Exception("No sclang binary found at path %s" % self.app.pargs.path)
+
 		code = self.app.pargs.code[0]
 
 		output, error = process.do_execute(sclang, code, self.app.pargs.print_output)
