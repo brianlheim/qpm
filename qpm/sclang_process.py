@@ -21,7 +21,8 @@ def find_sclang_executable(root):
 	else:
 		for dirpath, dirnames, filenames in os.walk(root):
 			if SCLANG_NAME in filenames:
-				result = os.path.join(dirpath, "sclang")
+				result = os.path.join(dirpath, SCLANG_NAME)
+				break
 
 	return result
 
@@ -33,6 +34,7 @@ def find_classlibrary(root):
 		for dirpath, dirnames, filenames in os.walk(root):
 			if CLASSLIB_NAME in dirnames:
 				result = os.path.join(dirpath, CLASSLIB_NAME)
+				break
 
 	return result
 
