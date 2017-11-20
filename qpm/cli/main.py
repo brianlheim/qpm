@@ -27,6 +27,7 @@ def main():
         traceback.print_exc()
         print(e)
     except Exception as e:
+        traceback.print_exc()
         print(e)
     finally:
         app.close()
