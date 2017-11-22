@@ -6,7 +6,7 @@ Written in Python.
 
 Author: Scott Carver (https://github.com/scztt)
 
-Supported versions: 
+Supported versions:
 - Python 2.7
 
 Features and Usage
@@ -32,7 +32,7 @@ You can also use the environment variable `QPM_SCLANG`:
 
 ### List tests available to a sclang executable
 
-	qpm test.list
+    qpm test.list
 
 ### Run tests
 
