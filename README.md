@@ -16,6 +16,15 @@ Features and Usage
 
     qpm execute '"hello world".postln' -p /path/to/sclang
 
+The result is a JSON string:
+
+    {'result': 'hello world'}
+
+You can also use the environment variable `QPM_SCLANG`:
+
+    export QPM_SCLANG=/path/to/sclang
+    qpm execute '"hello world".postln'
+
 ### Install quarks and list names and versions
 
     qpm quark list
