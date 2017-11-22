@@ -78,6 +78,7 @@ def set_non_block(output):
 def safe_read(output):
     fd = output.fileno()
     set_fd_non_block(fd)
+    print("in safe_read")
     try:
         return output.read()
     except Exception, e:
