@@ -1,5 +1,4 @@
 import sys
-import fcntl
 import os.path
 import subprocess
 import time
@@ -8,6 +7,8 @@ import yaml
 import json
 import re
 import appdirs
+
+from qpm.set_non_block import set_fd_non_block
 
 SC_OUTPUT_PATTERN = "\x1B{10}(.*?)\x1B{10}"
 SC_LAUNCHED_STRING = r"Welcome to SuperCollider"
@@ -72,13 +73,11 @@ def do_execute(sclang_path, code, includes=[], excludes=[], print_output=False):
 
 def set_non_block(output):
     fd = output.fileno()
-    fl = fcntl.fcntl(fd, fcntl.F_GETFL)
-    fcntl.fcntl(fd, fcntl.F_SETFL, fl | os.O_NONBLOCK)
+    set_fd_non_block(fd)
 
 def safe_read(output):
     fd = output.fileno()
-    fl = fcntl.fcntl(fd, fcntl.F_GETFL)
-    fcntl.fcntl(fd, fcntl.F_SETFL, fl | os.O_NONBLOCK)
+    set_fd_non_block(fd)
     try:
         return output.read()
     except Exception, e:
