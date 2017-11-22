@@ -60,7 +60,8 @@ def do_execute(sclang_path, code, includes=[], excludes=[], print_output=False):
     end_token = "********/EXECUTE********"
 
     exec_string = '{ var result; result = {%s}.value(); "%s".postln; result.postln; "%s".postln; }.fork(AppClock);' % (code, begin_token, end_token)
-    regex_string = '%s\n(.*)\n%s' % (re.escape(begin_token), re.escape(end_token))
+    # \r for Windows
+    regex_string = '%s\r?\n(.*)\r?\n%s' % (re.escape(begin_token), re.escape(end_token))
 
     proc.execute(exec_string)
     output, error = proc.wait_for(regex_string)
