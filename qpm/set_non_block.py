@@ -26,7 +26,7 @@ else:
         SetNamedPipeHandleState.argtypes = [HANDLE, LPDWORD, LPDWORD, LPDWORD]
         SetNamedPipeHandleState.restype = BOOL
 
-        h = msvcrt.get_osfhandle(pipefd)
+        h = msvcrt.get_osfhandle(fd)
 
         res = windll.kernel32.SetNamedPipeHandleState(h, byref(PIPE_NOWAIT), None, None)
         if res == 0:
