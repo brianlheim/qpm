@@ -154,7 +154,7 @@ class ScLangProcess:
 
             self.proc = subprocess.Popen(cmd,
                 stdout=subprocess.PIPE, stdin=subprocess.PIPE, stderr=subprocess.PIPE,
-                env=env, close_fds=True)
+                env=env, close_fds=sys.platform!='win32')
 
             self.start_time = time.time()
             self.launched = True
