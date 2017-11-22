@@ -18,6 +18,9 @@ else:
     from ctypes import windll, byref, wintypes, WinError
     from ctypes.wintypes import HANDLE, DWORD, POINTER, BOOL
 
+    LPDWORD = POINTER(DWORD)
+    PIPE_NOWAIT = wintypes.DWORD(0x00000001)
+
     def set_fd_non_block_win(fd):
         SetNamedPipeHandleState = windll.kernel32.SetNamedPipeHandleState
         SetNamedPipeHandleState.argtypes = [HANDLE, LPDWORD, LPDWORD, LPDWORD]
