@@ -18,8 +18,9 @@ CLASSLIB_NAME = "SCClassLibrary"
 def find_sclang_executable(root):
     result = False
     print("in find_sclang_executable")
-    print("root:", root)
+    print "root:", root
     if os.path.split(root)[1] == SCLANG_NAME:
+        print "split worked"
         result = root
     else:
         for dirpath, dirnames, filenames in os.walk(root):
@@ -28,6 +29,7 @@ def find_sclang_executable(root):
                 result = os.path.join(dirpath, SCLANG_NAME)
                 break
 
+    print "result: ", result
     return result
 
 def find_classlibrary(root):
