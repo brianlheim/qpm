@@ -51,6 +51,8 @@ def load_script(name):
         return script
 
 def do_execute(sclang_path, code, includes=[], excludes=[], print_output=False):
+    print "in do_execute. sclang_path:", sclang_path
+    print "exists?: ", os.path.exists(sclang_path)
     if not(sclang_path) or not(os.path.exists(sclang_path)):
         raise Exception("No sclang binary found in path %s" % sclang_path)
 
