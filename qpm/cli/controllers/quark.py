@@ -46,9 +46,9 @@ class Quark_Checkout(CementBaseController):
         description = 'Download quark to local store.'
         arguments = [
             (['quarks'], {
-				'action': 'store',
-				'nargs': '+'
-			}),
+                'action': 'store',
+                'nargs': '+'
+            }),
             (['-l', '--location'], {
                 'default': os.path.expanduser('~/Library/Application Support/SuperCollider/quark_versions'),
                 'nargs': '?',
@@ -85,9 +85,9 @@ class Quark_Versions(CementBaseController):
         description = 'List quarks versions available.'
         arguments = [
             (['quarks'], {
-				'action': 'store',
-				'nargs': '+'
-			})
+                'action': 'store',
+                'nargs': '+'
+            })
         ]
     @controller.expose(help="Show quark versions.", hide=True)
     def default(self):

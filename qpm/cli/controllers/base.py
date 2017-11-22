@@ -23,10 +23,10 @@ class SCLang_AbstractBase(CementBaseController):
             (['-p', '--path'], dict(default=default_sclang_path(), help=path_arg_help)),
             (['-i', '--include'], dict(default=[], nargs='*', help='Path to include in ClassLib')),
             (['-e', '--exclude'], dict(default=[], nargs='*', help='Path to exclude in ClassLib')),
-			(['-o', '--print-output'], {
-				'action': 'store_true',
-				'help': 'print output of sclang'
-			})
+            (['-o', '--print-output'], {
+                'action': 'store_true',
+                'help': 'print output of sclang'
+            })
         ]
 
     def _collect(self):
