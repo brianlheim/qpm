@@ -51,11 +51,7 @@ To see options available for a given subcommand:
 Installing
 ----------
 
-qpm is available via pip:
-
-    pip install qpm
-
-For developing, install via either:
+Install via either:
 
     pip install -e . # install from this directory
 
