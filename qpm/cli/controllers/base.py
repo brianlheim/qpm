@@ -1,6 +1,7 @@
 """ Qpm base controller."""
 import os
 from cement.core.controller import CementBaseController, expose
+from qpm.cli.utils import default_sclang_path, path_arg_help
 
 class SCLang_Base(CementBaseController):
     class Meta:
@@ -19,7 +20,7 @@ class SCLang_AbstractBase(CementBaseController):
         stacked_on = 'sc'
         stacked_type = 'nested'
         base_arguments = [
-            (['-p', '--path'], dict(default=os.getcwd(), help='Path to supercollider installation or config.yaml')),
+            (['-p', '--path'], dict(default=default_sclang_path(), help=path_arg_help)),
             (['-i', '--include'], dict(default=[], nargs='*', help='Path to include in ClassLib')),
             (['-e', '--exclude'], dict(default=[], nargs='*', help='Path to exclude in ClassLib')),
 			(['-o', '--print-output'], {

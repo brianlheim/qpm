@@ -2,6 +2,7 @@ import os.path
 import numbers
 
 from cement.core import foundation, controller, output, handler
+from qpm.cli.utils import default_sclang_path, path_arg_help
 
 import colorama
 colorama.init()
@@ -12,7 +13,7 @@ class QPMBaseController(controller.CementBaseController):
 		description = 'Do things with SuperCollider'
 
 		arguments = [
-            (['-p', '--path'], dict(default=os.getcwd(), help='Path to supercollider installation or config.yaml')),
+            (['-p', '--path'], dict(default=default_sclang_path(), help=path_arg_help)),
 		]
 
 class QPMApp(foundation.CementApp):
