@@ -161,13 +161,22 @@ class ScLangProcess:
 			self.launched = True
 
 		if not(self.ready):
-			output, error = self.wait_for(SC_LAUNCHED_STRING, 3 * 60)
+			output, error = self.wait_for_detecting_error(SC_LAUNCHED_STRING, 3 * 60)
 			if not(error):
 				self.ready = True
 				return True
 			else:
 				self.error = error
 				return False
+
+	def wait_for_detecting_error(self, regex, timeout=30, kill_on_error=True):
+		regex = regex + '|(.*ERROR:.*)'
+		output, error = self.wait_for(regex, timeout, kill_on_error)
+		if output and re.search("ERROR", output.group(0)):
+			error_msg = re.search("ERROR.*", output.group(0), re.DOTALL)
+			return (None, error_msg.group(0))
+		else:
+			return (output, error)
 
 	def wait_for(self, regex, timeout=30, kill_on_error=True):
 		output = ""
